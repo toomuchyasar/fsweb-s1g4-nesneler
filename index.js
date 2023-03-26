@@ -1,58 +1,50 @@
 
-/*Bu görevleri yaparken çıktıların doğru çalıştığını kontrol etmeniz için console.log'u sıklıkla kullanmanızı tavsiye ediyoruz.*/
-
-///////////////Menu Elemanları ///////////////////
 const cay = {isim: "Çay", fiyat: 4, kategori: "İçecekler"};
 const serpmeKahvalti = {isim: "Serpme Kahvaltı", fiyat: 16, kategori:"Kahvaltı"};
 
-/* Görev 1a: Nesneler döndüren bir fonksiyon yazın
-	Aşağıdaki MenuElemaniOlustur fonksiyonunu, yukarıda gördüğünüz cay ve serpmeKahvalti (isim, fiyat, kategori) nesnelerini oluşturacak şekilde yazın. 
-	Fonksiyonun özellikleri:
-	1. Nesne(object) oluşturmak için gerekli parametleri alacak
-	2. Alınan değerleri kullanarak oluşturulan nesne(object) döndürülecek(return)
-	
-	Örnek MenuElemaniOlustur('Cheeseburger', 8, 'Burgerler') şunu döndürmeli: {isim: 'Cheeseburger', fiyat: 8, kategori: 'Burgerler'}
-*/
 
-
-function MenuElemaniOlustur(/*Kodlar buraya*/){
-	/*Kodlar buraya*/
+function MenuElemaniOlustur(isim,fiyat,kategori){
+	const eleman = {
+		isim : isim,
+		fiyat : fiyat,
+		kategori : kategori,
+	};
+	return eleman;
 }
 
-
-
-/*  Görev 1b (otomatik test yok): 
-	Fonksiyonu çağırın!
-	Aşağıdakileri uygulayarak MenuElemaniOlustur fonksiyonunuzu test edin:
-	1. MenuElemaniOlustur ile nesne oluşturmak için parametreleri girerek fonksiyonu çağırın (menu elemanları)
-	2. Kendi seçtiğiniz isim,fiyat ve kategorileri kullanarak en az 3 menü elemanı oluşturun 
-	3. Tüm döndürülen sonuçları konsolda gözlemleyin (console.log)
-	
-	Örnek: MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar") şunu döndürür: {isim:"Karışık Pizza",fiyat:5,kategori:"Pizzalar"}
-*/
-
-
-
-/* Görev 2: 
-	Özel bir öğle yemeği yiyorsun! Öğretmen ve öğrencilere %25, diğer kişilere %10 indirim var. Aşağıdaki burger nesnesine, indirimi fiyatı otomatik olarak hesaplayan bir metot ekleyin.
-	
-	burger nesnesine aşağıdakileri uygulayın:
-	1. burger nesnesine adı indirim olan bir metot ekleyin
-	2. Argüman olarak indirim metodu parametre olarak bir string kabul edecek ve bu string "öğretmen", "öğrenci", ya da "diğer" değerine sahip olacak.
-	3. Bu stringe göre gerekli indirimli fiyat döndürülecek
-	4. String argümanına, 'öğretmen', 'öğrenci', ya da 'diğer' değerlerinden birini kullanarak fonksiyonunuzu çağırın.
-	
-	Örnek: burger.indirim("öğretmen") 13.5 döndürmeli ve burger.indirim("diğer") 16.2 döndürmeli
-*/
+MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar")
+MenuElemaniOlustur("Sutlac",2,"Tatlılar")
+MenuElemaniOlustur("Kola",3,"İçecekler")
+const kola = ("Kola",3,"İçecekler")
 
 
 const burger = {
 	isim: "Burger", 
 	fiyat: 18, 
 	kategori: "Öğle Yemeği", 
-
+	indirim : function(kisi){
+		let cost;
+		let cost1;
+		let cost2;
+		if(kisi=="öğretmen"){
+			cost= this.fiyat * 0.75
+			console.log(cost);
+			return cost;
+		}else if(kisi=="öğrenci"){
+			cost1 = this.fiyat * 0.75
+			console.log(cost1);
+			return cost1;
+		}else if(kisi=="diğer"){
+			cost2 = this.fiyat * 0.9
+			console.log(cost2);
+			return cost2;
+		}
+		
+	}
 }
-
+burger.indirim("öğretmen");
+burger.indirim("öğrenci");
+burger.indirim("diğer");
 
 
 ///////////////Değerlendirmeler (MVP)///////////////////
@@ -66,40 +58,35 @@ const degerlendirmeler = [
     {isim: "Latife", puan: 4, geribildirim: "Kesinlikle karaoke Cumalarını seviyorum! Yemek ve içki çeşitleri iyi."},
     {isim: "Reyna", puan: 3.5, geribildirim: ""},
 ]
+degerlendirmeler[7].geribildirim = "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
 
-/*  Görev 3 (ototest yok):  
-	Yukarıdaki degerlendirmeler dizisini(array) kullanarak:
-	1. Sadece Ahmet'in geribildirimini konsolda görüntüleyin - fonksiyona gerek yok
-*/
+const degerlendirmeler1 = [
+    {isim: "Nalan", puan: 5, geribildirim:"Mükemmel atmosfer ve mükemmel vegan seçenekleri!"},
+    {isim: "Kuddusi", puan: 3, geribildirim:"Benim zevkime göre biraz fazla yenilikçi, burger iyi ama fiyatı yüksek"},
+    {isim: "Kamuran", puan: 4, geribildirim:"eğlenceli bilgiler ve havalı hisler"},
+    {isim: "Elif", puan: 4.5, geribildirim:"Evimden pek çıkmıyorum ama çıktığımda sadece buraya geliyorum. Şiddetle tavsiye ederim."},
+    {isim: "Pınar", puan: 3, geribildirim: "atıştırmalıklar harika ve gün içinde çalışmak için güzel bir cafe alanı."},
+    {isim: "Ahmet", puan: 2, geribildirim: "Bu mekan beni fazla etkilemedi. Menüde özel bir şey yok ve çok pahalı. Atmosferi de ben beğenmedim ama başkaları beğenebilir." },
+    {isim: "Latife", puan: 4, geribildirim: "Kesinlikle karaoke Cumalarını seviyorum! Yemek ve içki çeşitleri iyi."},
+    {isim: "Reyna", puan: 3.5, geribildirim: ""},
+]
+degerlendirmeler1[7].geribildirim = "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
 
+function DegerledirmeEkle(degerlendirmeler,name,points,feedback){
 
-
-/*  Görev 4 (ototest yok):  
-	Reyna'nın geribildirimi girilmemiş! Aşağıdakileri uygulayın: (fonksiyona gerek yok) 
-	1. Bu geribildirimi Reyna'nın değerlendirmesine ekleyin - "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
-	2. degerlendirmeler dizisini konsolda görüntüleyerek çalışmanızı kontrol edin
-*/
-
-
-
-/*  Görev 5: 
-	isim, puan, geribildirim'i içeren bir değerlendirme nesnesi oluşturup, yeni değerlendirmeyi mevcut dizinin(array) sonuna ekleyip sonuç dizisini döndüren bir fonksiyon tanımlayın. 
+	const Degerlendirme = {
+		isim : name,
+		puan : points,
+		geribildirim : feedback,
+		}
+		degerlendirmeler.push(Degerlendirme);
+		return degerlendirmeler;
+		}
+		
+		DegerledirmeEkle(degerlendirmeler,"Yaşar",5,"Harika!");
+		DegerledirmeEkle(degerlendirmeler,"Ece",2,"kötü");
+		DegerledirmeEkle(degerlendirmeler,"Yumak",7,"iyi!");
 	
-	DegerledirmeEkle fonksiyonunu kullanarak aşağıdakileri uygulayın:
-	1. Verilen degerlendirmeler dizisini fonksiyonun İLK parametresi olarak alacak
-	2. Şu parametreleri alacak: isim, puan, and geribildirim; bunları İKİNCİ, ÜÇÜNCÜ ve DÖRDÜNCÜ parametre olarak alacak
-	3. Fonksiyon yeni bir nesne yaratacak ve dizinin sonuna bu nesneyi ekleyecek.
-	🌟 ÖRNEK: DegerledirmeEkle(degerlendirmeler, 'Hurşut', 2, 'Boktan yemekler!') dizinin sonuna şunu eklemeli: {isim: 'Hurşut', puan: 2, geribildirim: 'Boktan yemekler!'}
-	4. Güncellenmiş diziyi döndürecek
-*/
-
-
-function DegerledirmeEkle(/*Kodlar buraya */){
-	/*Kodlar buraya */
-	
-}
-
-
 
 /*  Görev 6: 
 	Dizideki değerlendirmelerin anahtarına(key,index) bağlı olarak bir değerlendirme döndüren bir fonksiyon yazın
@@ -112,11 +99,12 @@ function DegerledirmeEkle(/*Kodlar buraya */){
 */
 
 
-function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
-
+function AnahtardanDegerlendirmeAl(array,index) {
+	console.log(array[index].isim + " isimli kişi " + array[index].puan + " puan verdi ve şunları yazdı: " + array[index].geribildirim)
+	return array[index].isim + " isimli kişi " + array[index].puan + " puan verdi ve şunları yazdı: " + array[index].geribildirim
 }
-
+AnahtardanDegerlendirmeAl(degerlendirmeler,0);
+AnahtardanDegerlendirmeAl(degerlendirmeler,3);
 
 
 /*  Görev 7:  
@@ -131,12 +119,12 @@ function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
 	Not: Eğer 4. görevi başarıyla yaptıysanız kişinin geribildirimi boş görünmemeli
 */
 
-
-function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
+function SonDegerlendirmeyiAl(array) {
+	return array[array.length-1].isim + " isimli kişi " + array[array.length-1].puan + " puan verdi ve şunları yazdı: " + array[array.length-1].geribildirim
 } 
-
-
+	
+	SonDegerlendirmeyiAl(degerlendirmeler1);
+	
 
 /////////////// BONUS  GÖRVLER////////////////////
 
